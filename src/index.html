@@ -1,12 +1,96 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <link rel="stylesheet" href="./pages/index.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mesto Russia</title>
 </head>
-<body>
-    
+<body class="page">
+
+    <header class="header">
+        <img class="logo" src="../src/images/logo.svg" alt="Логотип"/>
+    </header>
+
+    <main class="content">
+
+        <section class="profile">
+            
+              <div class="profile__avatar-container">
+                  <img class="profile__avatar" src="../src/images/Avatar.jpg" alt="Аватар профиля"/>
+              </div>
+              <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <p class="profile__job">Исследователь океана</p>
+              </div>
+              <button type="button" class="profile__edit-button">
+                <img class="profile__edit-icon" src="../src/images/profile__edit-icon.svg" alt="редактирование профиля"/>
+              </button>
+              
+        </section>
+
+
+       
+                <section class="photo__list">
+                    
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/dombay.jpg" alt="Домбай">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Гора Домбай</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/elbrus.jpg" alt="Эльбрус">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Гора Эльбрус</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/karachaevo_cherckesia.jpg" alt="Карачаево-Черкесия">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Карачаево-Черкесия</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/dombay2.jpg" alt="Домбай">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Гора Домбай</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/karachaevsk.jpg" alt="Карачаевск">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Карачаевск</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+
+                    <div class="photo__card">
+                        <img class="photo__card-image" src="../src/images/elbrus2.jpg" alt="Эльбрус">
+                        <div class="photo__card-description">
+                            <h2 class="photo__card-title">Гора Эльбрус</h2>
+                            <img class="photo__card-like" src="../src/images/Vector (Stroke).svg"alt="сердечко">
+                        </div>
+                    </div>
+                </section>
+     
+
+
+
+    </main>
+
+    <footer class="footer">
+
+    </footer>
+
 </body>
 </html>
