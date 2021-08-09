@@ -1,9 +1,9 @@
-.profile__addimage-button {
+.profile__add-image-button {
     width: 150px;
     height: 50px;
     align-self: center;
     margin-left: auto;
-    background-image: url(../images/.profile__add-image.svg);
+    background-image: url(../../../images/add-image.svg);
     background-color: transparent;
     background-position: center;
     background-size: 22px;
