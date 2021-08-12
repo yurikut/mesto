@@ -13,7 +13,6 @@ const popupToggle = function() {
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
     }
-    
     popup.classList.toggle('popup_opened');
 }
 
@@ -22,10 +21,8 @@ closeButton.addEventListener('click', popupToggle);
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
-
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
-
     popup.classList.remove('popup_opened');
 }
 

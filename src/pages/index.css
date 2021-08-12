@@ -8,20 +8,23 @@
 
 @import url('../blocks/profile/__avatar/profile__avatar.css');
 @import url('../blocks/profile/__add-image-button/profile__add-image-button.css');
-@import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__info/profile__info.css');
+@import url('../blocks/profile/__name-container/profile__name-container.css');
+@import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__job/profile__job.css');
 @import url('../blocks/profile/__name/profile__name.css');
-@import url('../blocks/profile/__name-container/profile__name-container.css');
+
 @import url('../blocks/profile/profile.css');
 
+@import url('../blocks/photos/photos.css');
+@import url('../blocks/photos/__card/photos__card.css');
 @import url('../blocks/photos/__card/__card-description/photos__card-desription.css');
 @import url('../blocks/photos/__card/__card-image/photos__card-image.css');
+@import url('../blocks/photos/__card/__card-title/photos__card-title.css');
 @import url('../blocks/photos/__card/__card-like-button/photos__card-like-button.css');
 @import url('../blocks/photos/__card/__card-like-button/photos__card-like-button_liked.css');
-@import url('../blocks/photos/__card/__card-title/photos__card-title.css');
-@import url('../blocks/photos/__card/photos__card.css');
-@import url('../blocks/photos/photos.css');
+
+
 
 @import url('../blocks/footer/__copyrigth/footer__copyright.css');
 @import url('../blocks/footer/footer.css');
