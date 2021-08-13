@@ -1,6 +1,7 @@
 @import url('../vendor/normalize.css');
 @import url('../vendor/fonts/fonts.css');
 @import url('../blocks/page/page.css');
+
 @import url('../blocks/header/__logo/header__logo.css');
 @import url('../blocks/header/header.css');
 
@@ -18,11 +19,11 @@
 
 @import url('../blocks/photos/photos.css');
 @import url('../blocks/photos/__card/photos__card.css');
-@import url('../blocks/photos/__card/__card-description/photos__card-desription.css');
-@import url('../blocks/photos/__card/__card-image/photos__card-image.css');
-@import url('../blocks/photos/__card/__card-title/photos__card-title.css');
-@import url('../blocks/photos/__card/__card-like-button/photos__card-like-button.css');
-@import url('../blocks/photos/__card/__card-like-button/photos__card-like-button_liked.css');
+@import url('../blocks/photos/__card-description/photos__card-desription.css');
+@import url('../blocks/photos/__card-image/photos__card-image.css');
+@import url('../blocks/photos/__card-title/photos__card-title.css');
+@import url('../blocks/photos/__card-like-button/photos__card-like-button.css');
+@import url('../blocks/photos/__card-like-button/photos__card-like-button_liked.css');
 
 
 
