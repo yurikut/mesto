@@ -9,7 +9,7 @@
 
 * Кутаков Юрий 2021
 
-* Ссылка на проект https://yurikut.github.io/mesto/
+* Ссылка на проект https://yurikut.github.io/mesto
 
 
 
