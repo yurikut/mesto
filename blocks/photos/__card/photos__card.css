@@ -1,4 +1,5 @@
 .photos__card {
+    list-style-type: none;
     width: 282px;
     border-radius: 10px;
     background-color: #FFFFFF;

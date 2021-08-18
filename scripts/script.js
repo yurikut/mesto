@@ -64,7 +64,7 @@ function createNewCard(name, link) {
 
     cardElement.querySelector('.photos__card-title').textContent = name;
     cardImage.src = link;
-    cardImage.alt = 'На карточке изображено: ' + name;
+    cardImage.alt = 'На фото: ' + name;
 
     cardElement.querySelector('.photos__card-like-button').addEventListener('click', likeIcon);
 
