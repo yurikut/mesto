@@ -35,10 +35,28 @@
     <div class="popup popup_type_add-card">
       <div class="popup__container popup__container_type_add-card">
         <button class="popup__close-button" type="button"></button>
-        <form class="form" name="saveForm">
+        <form class="form" name="saveForm" novalidate>
           <h2 class="form__title">Новое место</h2>
-          <input type="text" name="cardTitle" placeholder="Название места" class="form__input form__input_el_title" />
-          <input type="text" name="cardLink" placeholder="Ссылка на картинку" class="form__input form__input_el_link" />
+          <input
+            type="text"
+            name="cardTitle"
+            placeholder="Название места"
+            class="form__input form__input_el_title"
+            id="cardTitle"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="form__input-error" id="cardTitle-error"></span>
+          <input
+            type="url"
+            name="cardLink"
+            placeholder="Ссылка на картинку"
+            class="form__input form__input_el_link"
+            id="cardLink"
+            required
+          />
+          <span class="form__input-error" id="cardLink-error"></span>
           <button type="submit" class="form__submit-button">Создать</button>
         </form>
       </div>
@@ -47,10 +65,30 @@
     <div class="popup popup_type_edit-profile">
       <div class="popup__container popup__container_type_edit-profile">
         <button class="popup__close-button" type="button"></button>
-        <form class="form" name="saveForm">
+        <form class="form" name="saveForm" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
-          <input type="text" name="userName" placeholder="Имя" class="form__input form__input_el_name" />
-          <input type="text" name="userJob" placeholder="О себе" class="form__input form__input_el_about" />
+          <input
+            type="text"
+            name="userName"
+            placeholder="Имя"
+            class="form__input form__input_el_name"
+            id="userName"
+            maxlength="40"
+            minlength="2"
+            required
+          />
+          <span class="form__input-error" id="userName-error"></span>
+          <input
+            type="text"
+            name="userJob"
+            placeholder="О себе"
+            class="form__input form__input_el_about"
+            id="userJob"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="form__input-error" id="userJob-error"></span>
           <button type="submit" class="form__submit-button">Сохранить</button>
         </form>
       </div>
