@@ -48,14 +48,7 @@
             required
           />
           <span class="form__input-error" id="cardTitle-error"></span>
-          <input
-            type="url"
-            name="cardLink"
-            placeholder="Ссылка на картинку"
-            class="form__input form__input_el_link"
-            id="cardLink"
-            required
-          />
+          <input type="url" name="cardLink" placeholder="Ссылка на картинку" class="form__input form__input_el_link" id="cardLink" required />
           <span class="form__input-error" id="cardLink-error"></span>
           <button type="submit" class="form__submit-button">Создать</button>
         </form>
@@ -67,27 +60,9 @@
         <button class="popup__close-button" type="button"></button>
         <form class="form" name="saveForm" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
-          <input
-            type="text"
-            name="userName"
-            placeholder="Имя"
-            class="form__input form__input_el_name"
-            id="userName"
-            maxlength="40"
-            minlength="2"
-            required
-          />
+          <input type="text" name="userName" placeholder="Имя" class="form__input form__input_el_name" id="userName" maxlength="40" minlength="2" required />
           <span class="form__input-error" id="userName-error"></span>
-          <input
-            type="text"
-            name="userJob"
-            placeholder="О себе"
-            class="form__input form__input_el_about"
-            id="userJob"
-            minlength="2"
-            maxlength="200"
-            required
-          />
+          <input type="text" name="userJob" placeholder="О себе" class="form__input form__input_el_about" id="userJob" minlength="2" maxlength="200" required />
           <span class="form__input-error" id="userJob-error"></span>
           <button type="submit" class="form__submit-button">Сохранить</button>
         </form>
@@ -111,14 +86,8 @@
       </il>
     </template>
 
-    <template id="preview-image">
-      <figure class="popup__figure">
-        <img class="popup__image" />
-        <figcaption class="popup__caption"></figcaption>
-      </figure>
-    </template>
-
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/initial-Cards.js"></script>
     <script src="./scripts/validate.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
