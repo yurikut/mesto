@@ -39,11 +39,19 @@ function toggleSubmitButtonState(inputList, buttonElement, validationSettings) {
 }
 
 function resetValidation(popupName) {
+  const errorElements = popupName.querySelectorAll(`.form__input-error`);
+  const inputElements = popupName.querySelectorAll(`.form__input`);
+  errorElements.forEach((item) => {
+    item.textContent = '';
+    item.classList.remove('form__input-error_visible');
+  });
+  inputElements.forEach((item) => {
+    item.classList.remove('form__input_type_error');
+  });
   let button = popupName.querySelector('.form__submit-button');
   button.classList.add('form__submit-button_disabled');
   button.setAttribute('disabled', true);
 }
-
 function setEventListeners(formElement, validationSettings) {
   const inputList = Array.from(formElement.querySelectorAll(validationSettings.inputSelector));
   const buttonElement = formElement.querySelector(validationSettings.submitButtonSelector);

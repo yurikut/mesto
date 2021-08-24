@@ -48,11 +48,9 @@ function createNewCard(name, link) {
 }
 
 function openPreview(name, link) {
-  if (previewContainer.querySelector('.popup__figure') !== null) previewContainer.querySelector('.popup__figure').remove();
-  popupImage.src = link;
-  popupImage.alt = 'Фотография местности: ' + name;
-  previewElement.querySelector('.popup__caption').textContent = name;
-  previewContainer.append(previewElement);
+  previewImage.src = link;
+  previewImage.alt = 'Фотография местности: ' + name;
+  previewImageName.textContent = name;
   openPopup(popupPreviewImage);
 }
 
@@ -62,11 +60,13 @@ function showFirstCards() {
   });
 }
 
+function openPopupAddCard() {
+  formElementCard.reset();
+  resetValidation(popupAddCard);
+  openPopup(popupAddCard);
+}
+
 function openPopup(popupName) {
-  if (popupName === popupAddCard) {
-    formElementCard.reset();
-    resetValidation(popupName);
-  }
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupOnEscape);
 }
@@ -112,9 +112,7 @@ editButton.addEventListener('click', () => {
   openPopup(popupEditProfile);
 });
 
-addButton.addEventListener('click', () => {
-  openPopup(popupAddCard);
-});
+addButton.addEventListener('click', openPopupAddCard);
 
 closeProfileButton.addEventListener('click', () => {
   closePopup(popupEditProfile);
