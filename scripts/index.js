@@ -22,15 +22,19 @@ import {
   previewContainer,
 } from "../scripts/data.js";
 
-function deleteCard(evt) {
-  evt.target.closest('.photos__card').remove();
-}
+import Card from "../scripts/Card.js";
 
+import FormValidator from "../scripts/FormValidator.js";
+
+/*function deleteCard(evt) {
+  evt.target.closest('.photos__card').remove();
+}*/
+/*
 function likeIcon(evt) {
   evt.target.classList.toggle('photos__card-like-button_liked');
 }
 
-function createNewCard(name, link) {
+/*function createNewCard(name, link) {
   const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector('.photos__card-image');
@@ -48,14 +52,14 @@ function createNewCard(name, link) {
   });
 
   return cardElement;
-}
+}*/
 
-function openPreview(name, link) {
+/*function openPreview(name, link) {
   previewImage.src = link;
   previewImage.alt = 'Фотография местности: ' + name;
   previewImageName.textContent = name;
   openPopup(popupPreviewImage);
-}
+}*/
 
 function showFirstCards() {
   initialCards.forEach((item) => {
@@ -125,9 +129,9 @@ closeCardButton.addEventListener('click', () => {
   closePopup(popupAddCard);
 });
 
-closePreviewButton.addEventListener('click', () => {
+/*closePreviewButton.addEventListener('click', () => {
   closePopup(popupPreviewImage);
-});
+});*/
 
 formElementProfile.addEventListener('submit', submitProfile);
 formElementCard.addEventListener('submit', submitCard);
