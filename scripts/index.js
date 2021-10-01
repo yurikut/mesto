@@ -1,23 +1,26 @@
-const profileTitle = document.querySelector('.profile__name');
-const profileSubtitle = document.querySelector('.profile__job');
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-image-button');
-const popupEditProfile = document.querySelector('.popup_type_edit-profile');
-const popupAddCard = document.querySelector('.popup_type_add-card');
-const popupPreviewImage = document.querySelector('.popup_type_preview-image');
-const previewImage = popupPreviewImage.querySelector('.popup__image');
-const previewImageName = popupPreviewImage.querySelector('.popup__caption');
-const closeProfileButton = popupEditProfile.querySelector('.popup__close-button');
-const closeCardButton = popupAddCard.querySelector('.popup__close-button');
-const closePreviewButton = popupPreviewImage.querySelector('.popup__close-button');
-const formElementProfile = popupEditProfile.querySelector('.form');
-const formElementCard = popupAddCard.querySelector('.form');
-const nameInput = formElementProfile.querySelector('.form__input_el_name');
-const jobInput = formElementProfile.querySelector('.form__input_el_about');
-const cardContainer = document.querySelector('.photos');
-const cardNameInput = formElementCard.querySelector('.form__input_el_title');
-const cardLinkInput = formElementCard.querySelector('.form__input_el_link');
-const previewContainer = document.querySelector('.popup__container_type_preview-image');
+import {
+  initialCards,
+  profileTitle,
+  profileSubtitle,
+  editButton,
+  addButton,
+  popupEditProfile,
+  popupAddCard,
+  popupPreviewImage,
+  previewImage,
+  previewImageName,
+  closeProfileButton,
+  closeCardButton,
+  closePreviewButton,
+  formElementProfile,
+  formElementCard,
+  nameInput,
+  jobInput,
+  cardContainer,
+  cardNameInput,
+  cardLinkInput,
+  previewContainer,
+} from "../scripts/data.js";
 
 function deleteCard(evt) {
   evt.target.closest('.photos__card').remove();
