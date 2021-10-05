@@ -33,30 +33,21 @@ export function openPopup(popupName) {
 export function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupOnEscape);
-  resetValidation();
 }
 
+
+function createCard(newCard) {
+  const card = new Card(newCard, "#card");
+  return card.createNewCard();
+
+}
 
 function renderCards() {
   initialCards.forEach((item) => {
-    const card = new Card(item, "#card");
-    cardContainer.append(card.createNewCard());
+    cardContainer.append(createCard(item));
   });
 }
 
-function resetValidation() {
-  if (document.querySelectorAll(`.${config.inputErrorClass}`)) {
-    document
-      .querySelectorAll(`.${config.inputErrorClass}`)
-      .forEach((errorItem) => {
-        errorItem.classList.remove(config.inputErrorClass);
-        document.querySelector(`#${errorItem.id}-error`).textContent = "";
-        document
-          .querySelector(`#${errorItem.id}-error`)
-          .classList.remove(config.errorClass);
-      });
-    } 
-};
 
 
 function submitProfile(evt) {
@@ -66,10 +57,10 @@ function submitProfile(evt) {
   closePopup(popupEditProfile);
 }
 
+
 function submitCard(evt) {
   evt.preventDefault();
-  const card = new Card({name: cardNameInput.value, link: cardLinkInput.value}, "#card");
-  cardContainer.prepend(card.createNewCard());
+  cardContainer.prepend(createCard({name: cardNameInput.value, link: cardLinkInput.value}));
   formElementCard.reset();
   closePopup(popupAddCard);
 }
@@ -89,7 +80,14 @@ function closePopupOnOverlay(evt) {
   closePopup(evt.target);
 }
 
+const profileFormValidator = new FormValidator(config, formElementProfile);
+profileFormValidator.enableValidation();
+
+const cardFormValidator = new FormValidator(config, formElementCard);
+cardFormValidator.enableValidation();
+
 editButton.addEventListener('click', () => {
+  profileFormValidator.resetValidation();
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   openPopup(popupEditProfile);
@@ -98,6 +96,7 @@ editButton.addEventListener('click', () => {
 
 
 addButton.addEventListener('click', () => {
+  cardFormValidator.resetValidation();
   openPopup(popupAddCard);
 });
 
@@ -122,8 +121,4 @@ popupPreviewImage.addEventListener('click', closePopupOnOverlay);
 
 renderCards();
 
-const profileFormValidator = new FormValidator(config, formElementProfile);
-profileFormValidator.enableValidation();
 
-const cardFormValidator = new FormValidator(config, formElementCard);
-cardFormValidator.enableValidation();

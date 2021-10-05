@@ -32,6 +32,8 @@ export const addButton = document.querySelector('.profile__add-image-button');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupAddCard = document.querySelector('.popup_type_add-card');
 export const popupPreviewImage = document.querySelector('.popup_type_preview-image');
+export const popupImage = popupPreviewImage.querySelector(".popup__image");
+export const popupCapture = popupPreviewImage.querySelector(".popup__caption");
 export const previewImage = popupPreviewImage.querySelector('.popup__image');
 export const previewImageName = popupPreviewImage.querySelector('.popup__caption');
 export const closeProfileButton = popupEditProfile.querySelector('.popup__close-button');
@@ -49,7 +51,7 @@ export const previewContainer = document.querySelector('.popup__container_type_p
 export const config = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit-button",
-  inactiveButtonClass: "form__submit-button_disabled",
+  inactiveButtonClass: ".form__submit-button_disabled",
   inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error_visible",
 };
