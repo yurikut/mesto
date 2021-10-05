@@ -24,6 +24,7 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
     },
   ];
+
 export const profileTitle = document.querySelector('.profile__name');
 export const profileSubtitle = document.querySelector('.profile__job');
 export const editButton = document.querySelector('.profile__edit-button');
@@ -44,3 +45,11 @@ export const cardContainer = document.querySelector('.photos');
 export const cardNameInput = formElementCard.querySelector('.form__input_el_title');
 export const cardLinkInput = formElementCard.querySelector('.form__input_el_link');
 export const previewContainer = document.querySelector('.popup__container_type_preview-image');
+
+export const config = {
+  inputSelector: ".form__input",
+  submitButtonSelector: ".form__submit-button",
+  inactiveButtonClass: "form__submit-button_disabled",
+  inputErrorClass: "form__item_type_error",
+  errorClass: "form__item-error_visible",
+};

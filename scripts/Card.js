@@ -20,16 +20,14 @@ export default class Card {
 
     createNewCard() {
         this._element = this._getTemplate();
+        this._setEventListeners();
         const cardImage = this._element.querySelector(".photos__card-image");
         this._element.querySelector(".photos__card-title").textContent = this._name;
-
         cardImage.src = this._link;
         cardImage.alt = "На карточке изображено: " + this._name;
-
-        this._setEventListeners();
-    
         return this._element;
     }
+
 
     _handleLikeIcon() {
         this._element
@@ -49,7 +47,7 @@ export default class Card {
         popupImage.alt = "Фотография местности: " + this._name;
         popupCapture.textContent = this._name;
     
-        openPopup(popupPreview);
+        openPopup(popupPreviewImage);
     }
 
     _setEventListeners() {
@@ -60,21 +58,22 @@ export default class Card {
           });
     
         this._element
-          .querySelector("photos__card-delete-button")
+          .querySelector(".photos__card-delete-button")
           .addEventListener("click", () => {
             this._deleteCard();
           });
     
         this._element
-          .querySelector(".photo__card-image")
+          .querySelector(".photos__card-image")
           .addEventListener("click", () => {
             this._openPreview();
           });
     
-        closeButtonPreview.addEventListener("click", () => {
+        closePreviewButton.addEventListener("click", () => {
           closePopup(popupPreview);
         });
-      }
+      
     }
 
 }
+
