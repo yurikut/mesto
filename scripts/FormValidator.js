@@ -1,9 +1,6 @@
-import { config } from "./data.js";
-
 export default class FormValidator {
-  constructor(config, formSelector) {
-    this._formSelector = formSelector;
-    this._formElement = document.querySelector(formSelector);
+  constructor(config, formElement) {
+    this._formElement = formElement;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -15,11 +12,12 @@ export default class FormValidator {
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
-
+    
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
   }
+  
 
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
@@ -45,6 +43,10 @@ export default class FormValidator {
     });
   }
 
+  _disableSaveButton() {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+  }
+
   _toggleSubmitButtonState(inputList, buttonElement) {
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(this._inactiveButtonClass);
@@ -55,7 +57,7 @@ export default class FormValidator {
     }
   }
 
-  _setEventListeners() {
+ _setEventListeners() {
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._inputSelector)
     );
@@ -74,9 +76,11 @@ export default class FormValidator {
     });
   }
 
+
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
+      this. _disableSaveButton();
     });
 
     this._setEventListeners();

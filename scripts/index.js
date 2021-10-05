@@ -7,8 +7,6 @@ import {
   popupEditProfile,
   popupAddCard,
   popupPreviewImage,
-  previewImage,
-  previewImageName,
   closeProfileButton,
   closeCardButton,
   closePreviewButton,
@@ -19,7 +17,6 @@ import {
   cardContainer,
   cardNameInput,
   cardLinkInput,
-  previewContainer,
   config
 } from "../scripts/data.js";
 
@@ -28,6 +25,16 @@ import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
 
 
+export function openPopup(popupName) {
+  popupName.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnEscape);
+}
+
+export function closePopup(popupName) {
+  popupName.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnEscape);
+  resetValidation();
+}
 
 
 function renderCards() {
@@ -50,28 +57,12 @@ function resetValidation() {
       });
     } 
 };
-function openPopupAddCard() {
-  formElementCard.reset();
-  resetValidation(popupAddCard);
-  openPopup(popupAddCard);
-}
 
-export function openPopup(popupName) {
-  popupName.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupOnEscape);
-}
-
-export function closePopup(popupName) {
-  popupName.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupOnEscape);
-}
 
 function submitProfile(evt) {
   evt.preventDefault();
-
   profileTitle.textContent = nameInput.value;
   profileSubtitle.textContent = jobInput.value;
-
   closePopup(popupEditProfile);
 }
 
@@ -79,7 +70,7 @@ function submitCard(evt) {
   evt.preventDefault();
   const card = new Card({name: cardNameInput.value, link: cardLinkInput.value}, "#card");
   cardContainer.prepend(card.createNewCard());
-
+  formElementCard.reset();
   closePopup(popupAddCard);
 }
 
@@ -106,7 +97,9 @@ editButton.addEventListener('click', () => {
 
 
 
-addButton.addEventListener('click', openPopupAddCard);
+addButton.addEventListener('click', () => {
+  openPopup(popupAddCard);
+});
 
 closeProfileButton.addEventListener('click', () => {
   closePopup(popupEditProfile);

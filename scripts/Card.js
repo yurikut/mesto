@@ -29,7 +29,7 @@ export default class Card {
     }
 
 
-    _handleLikeIcon() {
+    _likeIcon() {
         this._element
           .querySelector(".photos__card-like-button")
           .classList.toggle("photos__card-like-button_liked");
@@ -54,7 +54,7 @@ export default class Card {
         this._element
           .querySelector(".photos__card-like-button")
           .addEventListener("click", () => {
-            this._handleLikeIcon();
+            this._likeIcon();
           });
     
         this._element
@@ -70,7 +70,7 @@ export default class Card {
           });
     
         closePreviewButton.addEventListener("click", () => {
-          closePopup(popupPreview);
+          closePopup(popupPreviewImage);
         });
       
     }
