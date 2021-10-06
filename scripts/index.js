@@ -4,12 +4,9 @@ import {
   profileSubtitle,
   editButton,
   addButton,
+  popups,
   popupEditProfile,
   popupAddCard,
-  popupPreviewImage,
-  closeProfileButton,
-  closeCardButton,
-  closePreviewButton,
   formElementProfile,
   formElementCard,
   nameInput,
@@ -72,13 +69,20 @@ function closePopupOnEscape(evt) {
 }
 
 
-
-function closePopupOnOverlay(evt) {
-  if (evt.target !== evt.currentTarget) {
-    return;
-  }
-  closePopup(evt.target);
+function closePopupOnClick() {
+  popups.forEach((popup) => {
+    popup.addEventListener('click', (evt) => {
+        if (evt.target.classList.contains('popup_opened')) {
+            closePopup(popup)
+        }
+        if (evt.target.classList.contains('popup__close-button')) {
+          closePopup(popup)
+        }
+    })
+  })
 }
+
+
 
 const profileFormValidator = new FormValidator(config, formElementProfile);
 profileFormValidator.enableValidation();
@@ -93,32 +97,15 @@ editButton.addEventListener('click', () => {
   openPopup(popupEditProfile);
 });
 
-
-
 addButton.addEventListener('click', () => {
   cardFormValidator.resetValidation();
   openPopup(popupAddCard);
 });
 
-closeProfileButton.addEventListener('click', () => {
-  closePopup(popupEditProfile);
-});
-
-closeCardButton.addEventListener('click', () => {
-  closePopup(popupAddCard);
-});
-
-closePreviewButton.addEventListener('click', () => {
-  closePopup(popupPreviewImage);
-});
-
 formElementProfile.addEventListener('submit', submitProfile);
 formElementCard.addEventListener('submit', submitCard);
 
-popupEditProfile.addEventListener('click', closePopupOnOverlay);
-popupAddCard.addEventListener('click', closePopupOnOverlay);
-popupPreviewImage.addEventListener('click', closePopupOnOverlay);
-
+closePopupOnClick();
 renderCards();
 
 

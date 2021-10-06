@@ -29,6 +29,7 @@ export const profileTitle = document.querySelector('.profile__name');
 export const profileSubtitle = document.querySelector('.profile__job');
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-image-button');
+export const popups = document.querySelectorAll('.popup');
 export const popupEditProfile = document.querySelector('.popup_type_edit-profile');
 export const popupAddCard = document.querySelector('.popup_type_add-card');
 export const popupPreviewImage = document.querySelector('.popup_type_preview-image');
@@ -51,7 +52,7 @@ export const previewContainer = document.querySelector('.popup__container_type_p
 export const config = {
   inputSelector: ".form__input",
   submitButtonSelector: ".form__submit-button",
-  inactiveButtonClass: ".form__submit-button_disabled",
+  inactiveButtonClass: "form__submit-button_disabled",
   inputErrorClass: "form__input_type_error",
   errorClass: "form__input-error_visible",
 };
