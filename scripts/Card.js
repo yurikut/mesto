@@ -1,12 +1,13 @@
-import { popupPreviewImage, popupImage, popupCapture } from "./data.js";
-import { closePopup, openPopup } from "./index.js";
+/*import { popupPreviewImage, popupImage, popupCapture } from "./data.js";
+import { openPopup } from "./index.js";*/
 
 export default class Card {
 
-    constructor(data, formSelector) {
+    constructor(data, formSelector, handleCardClick) {
         this._name = data.name;
         this._link = data.link;
         this._formSelector = formSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -14,7 +15,6 @@ export default class Card {
           .querySelector(this._formSelector)
           .content.querySelector(".photos__card")
           .cloneNode(true);
-    
         return cardElement;
     }
 
@@ -38,13 +38,13 @@ export default class Card {
         this._element.remove();
     }
 
-    _openPreview() {
+   /* _openPreview() {
         popupImage.src = this._link;
         popupImage.alt = "Фотография местности: " + this._name;
         popupCapture.textContent = this._name;
     
         openPopup(popupPreviewImage);
-    }
+    }*/
 
     _setEventListeners() {
         this._element.querySelector(".photos__card-like-button").addEventListener("click", () => {
@@ -56,7 +56,7 @@ export default class Card {
           });
     
         this._element.querySelector(".photos__card-image").addEventListener("click", () => {
-            this._openPreview();
+            this._handleCardClick();
           }); 
     }
 }
