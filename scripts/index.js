@@ -22,7 +22,7 @@ import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
 
 
-export function openPopup(popupName) {
+/*export function openPopup(popupName) {
   popupName.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupOnEscape);
 }
@@ -30,7 +30,7 @@ export function openPopup(popupName) {
 export function closePopup(popupName) {
   popupName.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupOnEscape);
-}
+}*/
 
 
 function createCard(newCard) {
@@ -62,14 +62,14 @@ function submitCard(evt) {
   closePopup(popupAddCard);
 }
 
-function closePopupOnEscape(evt) {
+/*function closePopupOnEscape(evt) {
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
-}
+}*/
 
 
-function closePopupOnClick() {
+/*function closePopupOnClick() {
   popups.forEach((popup) => {
     popup.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup_opened')) {
@@ -80,7 +80,7 @@ function closePopupOnClick() {
         }
     })
   })
-}
+}*/
 
 
 
