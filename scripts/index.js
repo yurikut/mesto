@@ -1,5 +1,4 @@
 import {
-  initialCards,
   profileTitle,
   profileSubtitle,
   editButton,
@@ -39,11 +38,11 @@ function createCard(newCard) {
 
 }
 
-function renderCards() {
+/*function renderCards() {
   initialCards.forEach((item) => {
     cardContainer.append(createCard(item));
   });
-}
+}*/
 
 
 
