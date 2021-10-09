@@ -11,11 +11,9 @@ import {
   formElementCard,
   nameInput,
   jobInput,
-  cardContainer,
+  cardContainerSelector,
 
-  config,
-  popupPreviewImageSElector
-} from "../scripts/data.js";
+  config} from "../scripts/data.js";
 
 import Card from "../scripts/Card.js";
 import FormValidator from "../scripts/FormValidator.js";
@@ -25,6 +23,7 @@ import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 
 const userData = new UserInfo({profileTitle, profileSubtitle});
+
 const defaultCards = new Section(
   {
     data: initialCards,
@@ -32,7 +31,7 @@ const defaultCards = new Section(
       defaultCards.addItem(createCard(item));
     },
   },
-  cardContainer
+  cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, () => {
   const FormData = popupCard.getInputValues();
@@ -56,9 +55,12 @@ function createCard(newCard) {
   return card.createNewCard();
 }
 
+console.log(userData,defaultCards);
+
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
-
+console.log(defaultCards._item);
+defaultCards.renderItems();
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();
