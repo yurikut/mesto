@@ -22,7 +22,7 @@ import UserInfo from "../scripts/UserInfo.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
 
-const userData = new UserInfo({profileTitle, profileSubtitle});
+const userData = new UserInfo({nameSelector: profileTitle, jobSelector: profileSubtitle});
 
 const defaultCards = new Section(
   {
@@ -77,8 +77,8 @@ addButton.addEventListener('click', () => {
   popupCard.open();
 });
 
-formElementProfile.addEventListener('submit', submitProfile);
-formElementCard.addEventListener('submit', submitCard);
+/*formElementProfile.addEventListener('submit', submitProfile);
+formElementCard.addEventListener('submit', submitCard);*/
 
 
 

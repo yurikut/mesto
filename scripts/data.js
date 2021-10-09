@@ -61,8 +61,8 @@ export const nameInput = formElementProfile.querySelector(
 export const jobInput = formElementProfile.querySelector(
   ".form__input_el_about"
 );
-export const cardContainerSelector = ".photos__card";
-export const cardContainer = document.querySelector(".photos__card");
+export const cardContainerSelector = ".photos";
+export const cardContainer = document.querySelector(".photos");
 export const cardNameInput = formElementCard.querySelector(
   ".form__input_el_title"
 );
