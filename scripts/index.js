@@ -34,14 +34,14 @@ const defaultCards = new Section(
   cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, () => {
-  const FormData = popupCard.getInputValues();
+  const FormData = popupCard._getInputValues();
 
   defaultCards.addItem(createCard(FormData));
 
   popupCard.close();
 });
 const popupProfile = new PopupWithForm(popupEditProfileSelector, () => {
-  userData.setUserInfo(popupProfile.getInputValues());
+  userData.setUserInfo(popupProfile._getInputValues());
   popupProfile.close();
 });
 const popupPreview = new PopupWithImage(popupPreviewImageSelector);
@@ -55,11 +55,10 @@ function createCard(newCard) {
   return card.createNewCard();
 }
 
-console.log(userData,defaultCards);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
-console.log(defaultCards._item);
+
 defaultCards.renderItems();
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
