@@ -24,19 +24,19 @@ import PopupWithForm from "../scripts/PopupWithForm.js";
 
 const userData = new UserInfo({nameSelector: profileTitle, jobSelector: profileSubtitle});
 
-const defaultCards = new Section(
+const sectionCards = new Section(
   {
     data: initialCards,
     renderer: (item) => {
-      defaultCards.addItem(createCard(item));
+      sectionCards.addItem(createCard(item));
     },
   },
   cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, () => {
   const FormData = popupCard._getInputValues();
-
-  defaultCards.addItem(createCard(FormData));
+  
+  sectionCards.addItem(createCard(FormData));
 
   popupCard.close();
 });
@@ -59,7 +59,7 @@ function createCard(newCard) {
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-defaultCards.renderItems();
+sectionCards.renderItems();
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();

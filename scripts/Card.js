@@ -1,8 +1,8 @@
 export default class Card {
 
-    constructor(data, formSelector, handleCardClick) {
-        this._name = data.name;
-        this._link = data.link;
+    constructor({link, name}, formSelector, handleCardClick) {
+        this._name = name;
+        this._link = link;
         this._formSelector = formSelector;
         this._handleCardClick = handleCardClick;
     }
@@ -16,6 +16,7 @@ export default class Card {
     }
 
     createNewCard() {
+        
         this._element = this._getTemplate();
         this._setEventListeners();
         this._cardImage = this._element.querySelector(".photos__card-image");
