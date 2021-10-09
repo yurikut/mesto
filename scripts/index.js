@@ -1,110 +1,83 @@
 import {
+  initialCards,
   profileTitle,
   profileSubtitle,
   editButton,
   addButton,
-  popups,
-  popupEditProfile,
-  popupAddCard,
+  popupEditProfileSelector,
+  popupCardSelector,
+  popupPreviewImageSelector,
   formElementProfile,
   formElementCard,
   nameInput,
   jobInput,
   cardContainer,
-  cardNameInput,
-  cardLinkInput,
-  config
+
+  config,
+  popupPreviewImageSElector
 } from "../scripts/data.js";
 
 import Card from "../scripts/Card.js";
-
 import FormValidator from "../scripts/FormValidator.js";
+import Section from "../scripts/Section.js";
+import UserInfo from "../scripts/UserInfo.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
 
+const userData = new UserInfo({profileTitle, profileSubtitle});
+const defaultCards = new Section(
+  {
+    data: initialCards,
+    renderer: (item) => {
+      defaultCards.addItem(createCard(item));
+    },
+  },
+  cardContainer
+);
+const popupCard = new PopupWithForm(popupCardSelector, () => {
+  const FormData = popupCard.getInputValues();
 
-/*export function openPopup(popupName) {
-  popupName.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupOnEscape);
-}
+  defaultCards.addItem(createCard(FormData));
 
-export function closePopup(popupName) {
-  popupName.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupOnEscape);
-}*/
-
+  popupCard.close();
+});
+const popupProfile = new PopupWithForm(popupEditProfileSelector, () => {
+  userData.setUserInfo(popupProfile.getInputValues());
+  popupProfile.close();
+});
+const popupPreview = new PopupWithImage(popupPreviewImageSelector);
+const profileFormValidator = new FormValidator(config, formElementProfile);
+const cardFormValidator = new FormValidator(config, formElementCard);
 
 function createCard(newCard) {
-  const card = new Card(newCard, "#card");
-  return card.createNewCard();
-
-}
-
-/*function renderCards() {
-  initialCards.forEach((item) => {
-    cardContainer.append(createCard(item));
+  const card = new Card(newCard, "#card", () =>{
+    popupPreview.open(newCard);
   });
-}*/
-
-
-
-function submitProfile(evt) {
-  evt.preventDefault();
-  profileTitle.textContent = nameInput.value;
-  profileSubtitle.textContent = jobInput.value;
-  closePopup(popupEditProfile);
+  return card.createNewCard();
 }
 
-
-function submitCard(evt) {
-  evt.preventDefault();
-  cardContainer.prepend(createCard({name: cardNameInput.value, link: cardLinkInput.value}));
-  formElementCard.reset();
-  closePopup(popupAddCard);
-}
-
-/*function closePopupOnEscape(evt) {
-  if (evt.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-}*/
-
-
-/*function closePopupOnClick() {
-  popups.forEach((popup) => {
-    popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            closePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__close-button')) {
-          closePopup(popup)
-        }
-    })
-  })
-}*/
-
-
-
-const profileFormValidator = new FormValidator(config, formElementProfile);
 profileFormValidator.enableValidation();
-
-const cardFormValidator = new FormValidator(config, formElementCard);
 cardFormValidator.enableValidation();
+
+popupCard.setEventListeners();
+popupPreview.setEventListeners();
+popupProfile.setEventListeners();
 
 editButton.addEventListener('click', () => {
   profileFormValidator.resetValidation();
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileSubtitle.textContent;
-  openPopup(popupEditProfile);
+  nameInput.value = userData.getUserInfo().name;
+  jobInput.value = userData.getUserInfo().job;
+  popupProfile.open();
 });
 
 addButton.addEventListener('click', () => {
   cardFormValidator.resetValidation();
-  openPopup(popupAddCard);
+  popupCard.open();
 });
 
 formElementProfile.addEventListener('submit', submitProfile);
 formElementCard.addEventListener('submit', submitCard);
 
-closePopupOnClick();
-renderCards();
+
 
 

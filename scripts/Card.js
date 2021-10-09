@@ -1,6 +1,3 @@
-/*import { popupPreviewImage, popupImage, popupCapture } from "./data.js";
-import { openPopup } from "./index.js";*/
-
 export default class Card {
 
     constructor(data, formSelector, handleCardClick) {
@@ -37,14 +34,6 @@ export default class Card {
     _deleteCard() {
         this._element.remove();
     }
-
-   /* _openPreview() {
-        popupImage.src = this._link;
-        popupImage.alt = "Фотография местности: " + this._name;
-        popupCapture.textContent = this._name;
-    
-        openPopup(popupPreviewImage);
-    }*/
 
     _setEventListeners() {
         this._element.querySelector(".photos__card-like-button").addEventListener("click", () => {
