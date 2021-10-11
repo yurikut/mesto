@@ -2,7 +2,9 @@ export default class FormValidator {
   constructor(config, formElement) {
     this._formElement = formElement;
     this._inputSelector = config.inputSelector;
-    this._buttonElement = this._formElement.querySelector(config.submitButtonSelector);
+    this._buttonElement = this._formElement.querySelector(
+      config.submitButtonSelector
+    );
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
@@ -15,12 +17,11 @@ export default class FormValidator {
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
-    
+
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._errorClass);
   }
-  
 
   _hideInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
@@ -67,15 +68,11 @@ export default class FormValidator {
   resetValidation() {
     this._toggleSubmitButtonState();
     this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement)
+      this._hideInputError(inputElement);
     });
-
   }
 
-
-
   _setEventListeners() {
-    
     this._toggleSubmitButtonState();
 
     this._inputList.forEach((inputElement) => {
@@ -86,13 +83,11 @@ export default class FormValidator {
     });
   }
 
-
   enableValidation() {
     this._setEventListeners();
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._disableSaveButton();
     });
-
   }
 }
