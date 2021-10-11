@@ -38,14 +38,14 @@ const sectionCards = new Section(
   cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, () => {
-  const FormData = popupCard._getInputValues();
+  const formData = popupCard.getInputValues();
 
-  sectionCards.addItem(createCard(FormData));
+  sectionCards.addItem(createCard(formData));
 
   popupCard.close();
 });
 const popupProfile = new PopupWithForm(popupEditProfileSelector, () => {
-  userData.setUserInfo(popupProfile._getInputValues());
+  userData.setUserInfo(popupProfile.getInputValues());
   popupProfile.close();
 });
 const popupPreview = new PopupWithImage(popupPreviewImageSelector);

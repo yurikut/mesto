@@ -1,7 +1,7 @@
 .header {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     margin: 0 auto;
     max-width: 882px;
     border-bottom: 1px solid rgba(54, 54, 54, 0.7);
