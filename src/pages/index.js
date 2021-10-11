@@ -14,14 +14,14 @@ import {
   jobInput,
   cardContainerSelector,
   config,
-} from "./scripts/data.js";
+} from "../scripts/data.js";
 
-import Card from "./scripts/Card.js";
-import FormValidator from "./scripts/FormValidator.js";
-import Section from "./scripts/Section.js";
-import UserInfo from "./scripts/UserInfo.js";
-import PopupWithImage from "./scripts/PopupWithImage.js";
-import PopupWithForm from "./scripts/PopupWithForm.js";
+import Card from "../scripts/Card.js";
+import FormValidator from "../scripts/FormValidator.js";
+import Section from "../scripts/Section.js";
+import UserInfo from "../scripts/UserInfo.js";
+import PopupWithImage from "../scripts/PopupWithImage.js";
+import PopupWithForm from "../scripts/PopupWithForm.js";
 
 const userData = new UserInfo({
   nameSelector: profileTitle,
