@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto Russia</title>
+    <script type="module" src="./scripts/index.js" defer></script>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="Логотип" />
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <img
+          class="profile__avatar"
+          src="./images/Avatar.jpg"
+          alt="Аватар профиля"
+        />
+        <div class="profile__info">
+          <div class="profile__name-container">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button"></button>
+          </div>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button type="button" class="profile__add-image-button"></button>
+      </section>
+
+      <ul class="photos"></ul>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+    </footer>
+
+    <div class="popup popup_type_add-card">
+      <div class="popup__container popup__container_type_add-card">
+        <button class="popup__close-button" type="button"></button>
+        <form class="form" name="saveForm" novalidate>
+          <h2 class="form__title">Новое место</h2>
+          <input
+            type="text"
+            name="name"
+            placeholder="Название места"
+            class="form__input form__input_el_title"
+            id="cardTitle"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="form__input-error" id="cardTitle-error"></span>
+          <input
+            type="url"
+            name="link"
+            placeholder="Ссылка на картинку"
+            class="form__input form__input_el_link"
+            id="cardLink"
+            required
+          />
+          <span class="form__input-error" id="cardLink-error"></span>
+          <button type="submit" class="form__submit-button">Создать</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_edit-profile">
+      <div class="popup__container popup__container_type_edit-profile">
+        <button class="popup__close-button" type="button"></button>
+        <form class="form" name="saveForm" novalidate>
+          <h2 class="form__title">Редактировать профиль</h2>
+          <input
+            type="text"
+            name="userName"
+            placeholder="Имя"
+            class="form__input form__input_el_name"
+            id="userName"
+            maxlength="40"
+            minlength="2"
+            required
+          />
+          <span class="form__input-error" id="userName-error"></span>
+          <input
+            type="text"
+            name="userJob"
+            placeholder="О себе"
+            class="form__input form__input_el_about"
+            id="userJob"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="form__input-error" id="userJob-error"></span>
+          <button type="submit" class="form__submit-button">Сохранить</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_preview-image">
+      <div class="popup__container popup__container_type_preview-image">
+        <figure class="popup__figure">
+          <img class="popup__image" />
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+        <button class="popup__close-button" type="button"></button>
+      </div>
+    </div>
+
+    <template id="card">
+      <il class="photos__card">
+        <img class="photos__card-image" />
+        <button class="photos__card-delete-button" type="button"></button>
+        <div class="photos__card-description">
+          <h2 class="photos__card-title"></h2>
+          <button type="button" class="photos__card-like-button"></button>
+        </div>
+      </il>
+    </template>
+  </body>
+</html>
