@@ -1,4 +1,4 @@
-import "./index.css";
+//import "./index.css";
 import {
   initialCards,
   profileTitle,
@@ -62,7 +62,7 @@ function createCard(newCard) {
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-sectionCards.renderItems();
+sectionCards.renderItems(initialCards);
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();

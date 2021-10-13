@@ -1,0 +1,13 @@
+{
+    "editor.bracketPairColorization.enabled": true,
+    "editor.definitionLinkOpensInPeek": true,
+    "editor.hover.delay": 200,
+    "editor.maxTokenizationLineLength": 2000,
+    "merge-conflict.autoNavigateNextConflict.enabled": true,
+    "css.completion.triggerPropertyValueCompletion": false,
+    "emmet.excludeLanguages": [],
+    "npm.enableRunFromFolder": true,
+    "prettier.printWidth": 120,
+    "prettier.requireConfig": true,
+    "javascript.format.insertSpaceAfterConstructor": true
+}
