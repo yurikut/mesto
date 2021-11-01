@@ -1,5 +1,5 @@
 export default class FormValidator {
-  constructor(config, formElement) {
+  constructor(config, formElement) {// передаем  config  и саму форму
     this._formElement = formElement;
     this._inputSelector = config.inputSelector;
     this._buttonElement = this._formElement.querySelector(
