@@ -1,15 +1,9 @@
 export default class Card {
-  constructor({ link, name, likes, isMy, ownerId, isLike }, formSelector, handleCardClick, handleDeleteCardClick, changeLikeIcon) {
+  constructor({ link, name }, formSelector, handleCardClick) {
     this._name = name;
     this._link = link;
-    this.like = likes.length;
-    this.isLike = isLike;
-    this._isMy = isMy;
-    this._ownerId = ownerId; 
     this._formSelector = formSelector;
     this._handleCardClick = handleCardClick;
-    this._handleDeleteCardClick = handleDeleteCardClick;
-    this._changeLikeIcon = changeLikeIcon;
   }
 
   _getTemplate() {
@@ -28,24 +22,12 @@ export default class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = "На карточке изображено: " + this._name;
     this._likeButton = this._element.querySelector(".photos__card-like-button");
-    this._toggleLikeIcon();
-    if (this._isMy) {
-      this._element.querySelector(".photos__card-delete-button")
-      .classList.remove(".photos__card-delete-button_hidden");
-    }
-
     return this._element;
   }
 
-  likeIcon() {
-    if (this.isLike) {
-      likeButton.classList.add("photoscard-like-button_liked");
-    } else {
-      likeButton.classList.remove("photos__card-like-button_liked");
-    }
-    this._element.querySelector(".photos__card-like-count").textContent = this.like;
+  _likeIcon() {
+    this._likeButton.classList.toggle("photos__card-like-button_liked");
   }
-
 
   _deleteCard() {
     this._element.remove();
@@ -56,16 +38,14 @@ export default class Card {
     this._element
       .querySelector(".photos__card-like-button")
       .addEventListener("click", () => {
-        this._changeLikeIcon(this.ownerId, this.isLike);
+        this._likeIcon();
       });
 
-    if (this._isMy) {
-      this._element
+    this._element
       .querySelector(".photos__card-delete-button")
       .addEventListener("click", () => {
         this._deleteCard();
       });
-    }
 
     this._element
       .querySelector(".photos__card-image")
