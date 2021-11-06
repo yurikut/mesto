@@ -1,8 +1,9 @@
 import "./index.css";
 import {
-  initialCards,
+  //initialCards,
   profileTitle,
   profileSubtitle,
+  profileAvatar,
   editButton,
   addButton,
   popupEditProfileSelector,
@@ -26,11 +27,11 @@ import PopupWithForm from "../scripts/PopupWithForm.js";
 const userData = new UserInfo({
   nameSelector: profileTitle,
   jobSelector: profileSubtitle,
+  avatarSelector: profileAvatar
 });
 
 const sectionCards = new Section(
   {
-    data: initialCards,
     renderer: (item) => {
       sectionCards.addItem(createCard(item));
     },
@@ -38,8 +39,10 @@ const sectionCards = new Section(
   cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, (value) => {
-  sectionCards.addItem(createCard(value));
-  popupCard.close();
+  renderButton(true);
+// обернуть в API
+  //sectionCards.addItem(createCard(value));
+  //popupCard.close();
 });
 const popupProfile = new PopupWithForm(popupEditProfileSelector, (value) => {
   userData.setUserInfo(value);
@@ -52,14 +55,14 @@ const cardFormValidator = new FormValidator(config, formElementCard);
 function createCard(newCard) {
   const card = new Card(newCard, "#card", () => {
     popupPreview.open(newCard);
-  });
+  });// передать ещё 2 обработчика
   return card.createNewCard();
 }
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-sectionCards.renderItems();
+sectionCards.renderItems(items);// передача массива карточек с сервера
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();

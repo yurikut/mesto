@@ -29,6 +29,7 @@ export const popupCardSelector = ".popup_type_add-card";
 export const popupPreviewImageSelector = ".popup_type_preview-image";
 export const profileTitle = ".profile__name";
 export const profileSubtitle = ".profile__job";
+export const profileAvatar = ".profile__avatar";
 export const editButton = document.querySelector(".profile__edit-button");
 export const addButton = document.querySelector(".profile__add-image-button");
 export const popups = document.querySelectorAll(".popup");

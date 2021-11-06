@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
   }
 
   renderButton(isBusy) {
-    this._button.textContent = isBusy ? 'Отправка...' : this._buttonDefaultText;
+    this._button.textContent = isBusy ? 'Сохранение...' : this._buttonDefaultText;
   }
 
   close() {
