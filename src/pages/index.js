@@ -39,7 +39,7 @@ const sectionCards = new Section(
   cardContainerSelector
 );
 const popupCard = new PopupWithForm(popupCardSelector, (value) => {
-  renderButton(true);
+  popupCard.renderButton(true);
 // обернуть в API
   //sectionCards.addItem(createCard(value));
   //popupCard.close();
@@ -69,8 +69,8 @@ popupProfile.setEventListeners();
 
 editButton.addEventListener("click", () => {
   profileFormValidator.resetValidation();
-  nameInput.value = userData.getUserInfo().name;
-  jobInput.value = userData.getUserInfo().job;
+  nameInput.value = userData.getUserInfo().userName;
+  jobInput.value = userData.getUserInfo().userJob;
   popupProfile.open();
 });
 
