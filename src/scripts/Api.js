@@ -1,8 +1,8 @@
 export default class Api {
 
-    constructor({ url, headers, cohortId }) {
+    constructor({ url, tocken, cohortId }) {
         this._cohortId = cohortId;
-        this._headers = headers;
+        this._headers.autorization = tocken;
         this._url = url;
     }
 
