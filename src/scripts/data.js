@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -23,7 +23,12 @@ export const initialCards = [
     name: "Байкал",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
-];
+];*/
+export const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1',
+  token: '1aa13265-ad88-4c40-a102-69558d45a615',
+  cohortId: 'cohort-30'
+}
 export const popupEditProfileSelector = ".popup_type_edit-profile";
 export const popupCardSelector = ".popup_type_add-card";
 export const popupPreviewImageSelector = ".popup_type_preview-image";

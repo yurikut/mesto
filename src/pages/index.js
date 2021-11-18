@@ -15,6 +15,7 @@ import {
   jobInput,
   cardContainerSelector,
   config,
+  apiConfig
 } from "../scripts/data.js";
 
 import Card from "../scripts/Card.js";
@@ -23,12 +24,17 @@ import Section from "../scripts/Section.js";
 import UserInfo from "../scripts/UserInfo.js";
 import PopupWithImage from "../scripts/PopupWithImage.js";
 import PopupWithForm from "../scripts/PopupWithForm.js";
+import Api from "../scripts/Api";
+
+const api = new Api(apiConfig);
 
 const userData = new UserInfo({
   nameSelector: profileTitle,
   jobSelector: profileSubtitle,
   avatarSelector: profileAvatar
 });
+
+let userId = null;
 
 const sectionCards = new Section(
   {
@@ -62,7 +68,7 @@ function createCard(newCard) {
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-sectionCards.renderItems(items);// передача массива карточек с сервера
+//sectionCards.renderItems(items);// передача массива карточек с сервера
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();
@@ -78,3 +84,15 @@ addButton.addEventListener("click", () => {
   cardFormValidator.resetValidation();
   popupCard.open();
 });
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])// запрос данных с сервера
+.then(([data, items]) => {
+  userId = data._id
+  userData.setUserInfo({
+    userName: data.name,
+    userJob: data.about,
+    userAvatar: data.avatar
+  });
+  sectionCards.renderItems(items)
+})
+.catch(err => console.log(err))// ? не обрабатывает ошибку?
