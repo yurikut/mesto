@@ -29,6 +29,7 @@ export const apiConfig = {
   token: '1aa13265-ad88-4c40-a102-69558d45a615',
   cohortId: 'cohort-30'
 }
+export const popupWithConfirmSelector =".popup_type_confirm"
 export const popupEditProfileSelector = ".popup_type_edit-profile";
 export const popupCardSelector = ".popup_type_add-card";
 export const popupPreviewImageSelector = ".popup_type_preview-image";

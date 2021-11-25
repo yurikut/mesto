@@ -69,7 +69,7 @@ export default class Api {
         headers: this._headers
       })
         .then((result) => {
-          return  result.ok ? result.json() : Promise.reject(`Не удалось удалить фото: ${result.status} `);
+          return  result.ok ? result.json() : Promise.reject(`Не удалось удалить фото ${cardId}: ${result.status} `);
       })
     }
 

@@ -53,7 +53,7 @@ export default class Card {
     return Boolean(this._likes.find((element) => element._id === this._userId));
   }
 
-  _deleteCard() {
+  deleteCard() {
     this._element.remove();
     this._element.innerHTML = "";
   }
@@ -68,7 +68,7 @@ export default class Card {
     this._element
       .querySelector(".photos__card-delete-button")
       .addEventListener("click", () => {
-        this._deleteCard();
+        this._handleDeleteIconClick('click', () => this._deleteCard());
       });
 
     this._element
