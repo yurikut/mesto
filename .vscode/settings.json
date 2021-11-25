@@ -9,5 +9,7 @@
     "npm.enableRunFromFolder": true,
     "prettier.printWidth": 120,
     "prettier.requireConfig": true,
-    "javascript.format.insertSpaceAfterConstructor": true
+    "javascript.format.insertSpaceAfterConstructor": true,
+    "prettier.withNodeModules": true,
+    "prettier.useEditorConfig": true,
 }

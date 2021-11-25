@@ -49,4 +49,47 @@ export default class Api {
           return  result.ok ? result.json() : Promise.reject(`Не удалось обновить аватар: ${result.status} `);
       });
     }
+
+    addNewCard({name, link}) {
+      return fetch(`${this._url}/${this._cohortId}/cards`,{
+        method: 'POST',
+        headers: this._headers,
+        body: JSON.stringify({
+          name: name,
+          link: link
+        })
+      }).then((result) => {
+          return  result.ok ? result.json() : Promise.reject(`Не удалось добавить фото: ${result.status} `);
+      })
+    } 
+
+    deleteCard(cardId){
+      return fetch(`${this._url}/${this._cohortId}/cards/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+        .then((result) => {
+          return  result.ok ? result.json() : Promise.reject(`Не удалось удалить фото: ${result.status} `);
+      })
+    }
+
+    addLike(cardId) {
+      return fetch(`${this._url}/${this._cohortId}/cards/likes/${cardId}`, {
+        method: 'PUT',
+        headers: this._headers
+      })
+        .then((result) => {
+          return  result.ok ? result.json() : Promise.reject(`Не удалось добавить отмеку 'Нравится': ${result.status} `);
+      })
+    }
+  
+    deleteLike(cardId) {
+      return fetch(`${this._url}/${this._cohortId}/cards/likes/${cardId}`, {
+        method: 'DELETE',
+        headers: this._headers
+      })
+        .then((result) => {
+          return  result.ok ? result.json() : Promise.reject(`Не удалось удалить отмеку 'Нравится': ${result.status} `);
+      })
+    }
 }

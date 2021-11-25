@@ -44,24 +44,68 @@ const sectionCards = new Section(
   },
   cardContainerSelector
 );
-const popupCard = new PopupWithForm(popupCardSelector, (value) => {
+const popupCard = new PopupWithForm(popupCardSelector, (cardData) => {
   popupCard.renderButton(true);
-// обернуть в API
-  //sectionCards.addItem(createCard(value));
-  //popupCard.close();
+
+  api.addNewCard(cardData)
+      .then((cardData) => {
+        sectionCards.addItem(createCard(cardData));
+        popupCard.close();
+      })
+      .catch(err => console.log(`Ошибка ${err}`))
+      .finally(() => popupCard.renderButton(false));
+
 });
 const popupProfile = new PopupWithForm(popupEditProfileSelector, (value) => {
-  userData.setUserInfo(value);
+  popupProfile.renderButton(true);
+  api.setUserInfo({
+    name: value.userName,
+    about: value.userJob
+  }).then((value) => {
+    userData.setUserInfo({
+      userName: value.name,
+      userJob: value.about,
+    });
   popupProfile.close();
+  })
+  .catch(err => console.log(`Не удалось обновить информацию о пользователе: ${err}`))
+  .finally(() => popupProfile.renderButton(false));
+  
 });
+
 const popupPreview = new PopupWithImage(popupPreviewImageSelector);
 const profileFormValidator = new FormValidator(config, formElementProfile);
 const cardFormValidator = new FormValidator(config, formElementCard);
 
 function createCard(newCard) {
-  const card = new Card(newCard, "#card", () => {
-    popupPreview.open(newCard);
-  });// передать ещё 2 обработчика
+  const card = new Card({data: { ... newCard, currentUserId: userId },
+    handleCardClick: () => {
+      popupPreview.open(newCard);
+    },
+
+    handleLikeClick: () => {
+    if (card.isLiked()) {
+      api.deleteLike(card.id())
+      .then((res) => {
+        card.setLikesInfo(res);
+      })
+      .catch((err) => console.log(err))
+     
+    }
+    else {
+      api.addLike(card.id())
+      .then((res) => {
+        card.setLikesInfo(res);
+      })
+      .catch((err) => console.log(err))
+     
+    }
+  },
+    
+  }, "#card");
+  
+  
+  // передать ещё 2 обработчика!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   return card.createNewCard();
 }
 
