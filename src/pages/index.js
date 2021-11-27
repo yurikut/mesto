@@ -2,21 +2,28 @@
 
 import "./index.css";
 import {
-  //initialCards,
   profileTitle,
   profileSubtitle,
   profileAvatar,
+
   editButton,
   addButton,
+  editAvatarButton,
   popupEditProfileSelector,
   popupCardSelector,
   popupPreviewImageSelector,
+  popupEditAvatarSelector,
+
   formElementProfile,
   formElementCard,
+  formElementAvatar,
+
   nameInput,
   jobInput,
+
   cardContainerSelector,
   popupWithConfirmSelector,
+
   config,
   apiConfig,
 } from "../scripts/data.js";
@@ -54,38 +61,50 @@ const popupCard = new PopupWithForm(popupCardSelector, (cardData) => {
 
   api
     .addNewCard(cardData)
-    .then((cardData) => {
-      sectionCards.addItem(createCard(cardData));
+    .then((resp) => {
+      sectionCards.addItem(createCard(resp));
       popupCard.close();
     })
     .catch((err) => console.log(`Ошибка ${err}`))
     .finally(() => popupCard.renderButton(false));
 });
 
-const popupProfile = new PopupWithForm(popupEditProfileSelector, (value) => {
+const popupProfile = new PopupWithForm(popupEditProfileSelector, (profileData) => {
   popupProfile.renderButton(true);
   api
     .setUserInfo({
-      name: value.userName,
-      about: value.userJob,
+      name: profileData.userName,
+      about: profileData.userJob,
     })
-    .then((value) => {
+    .then((resp) => {
       userData.setUserInfo({
-        userName: value.name,
-        userJob: value.about,
+        userName: resp.name,
+        userJob: resp.about
       });
       popupProfile.close();
     })
-    .catch((err) => console.log(`Не удалось обновить информацию о пользователе: ${err}`))
+    .catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => popupProfile.renderButton(false));
 });
+
+const popupAvatar = new PopupWithForm(popupEditAvatarSelector, (avatarData) => {
+  popupAvatar.renderButton(true);
+  api.setUserAvatar({ avatar: avatarData.avatarLink})
+  .then((resp) =>{
+    userData.setUserInfo({userAvatar: resp.avatar });
+    popupAvatar.close;
+  })
+  .catch((err) => console.log(`Ошибка: ${err}`))
+  .finally(() => {
+    popupAvatar.renderButton(false);
+    popupAvatar.close();
+  });
+})
 
 const popupPreview = new PopupWithImage(popupPreviewImageSelector);
 
 const popupConfirm = new PopupWithConfirm(popupWithConfirmSelector);
 
-const profileFormValidator = new FormValidator(config, formElementProfile);
-const cardFormValidator = new FormValidator(config, formElementCard);
 
 function createCard(newCard) {
   const card = new Card(
@@ -125,18 +144,25 @@ function createCard(newCard) {
       });
     },
   }, "#card");
-  console.log(newCard);
   return card.createNewCard();
 }
+
+// валидация форм
+const profileFormValidator = new FormValidator(config, formElementProfile);
+const cardFormValidator = new FormValidator(config, formElementCard);
+const avatarFormValidator = new FormValidator(config, formElementAvatar);
 
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
-//sectionCards.renderItems(items);// передача массива карточек с сервера
+
+// установка слушателей 
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();
+popupAvatar.setEventListeners();
 popupConfirm.setEventListeners();
 
 editButton.addEventListener("click", () => {
@@ -151,16 +177,20 @@ addButton.addEventListener("click", () => {
   popupCard.open();
 });
 
-Promise.all([api.getUserInfo(), api.getInitialCards()]) // запрос данных с сервера
+editAvatarButton.addEventListener("click", () => {
+  avatarFormValidator.resetValidation();
+  popupAvatar.open();
+});
+
+// обновление данных с сервера
+Promise.all([api.getUserInfo(), api.getInitialCards()]) 
   .then(([data, items]) => {
     userId = data._id;
-    console.log(data);
     userData.setUserInfo({
       userName: data.name,
       userJob: data.about,
       userAvatar: data.avatar,
     });
     sectionCards.renderItems(items.reverse());
-    console.log(items);
   })
-  .catch((err) => console.log(err)); // ? не обрабатывает ошибку?
+  .catch((err) => console.log(`Ошибка: ${err}`));
