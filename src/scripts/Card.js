@@ -1,6 +1,6 @@
 export default class Card {
   constructor({data: { link, name, likes, currentUserId, _id, owner },
-              handleCardClick, handleLikeClick, handleDeleteIconClick}, cardSelector,) {
+            handleCardClick, handleLikeClick, handleDeleteIconClick}, cardSelector,) {
     this._name = name;
     this._link = link;
     this._likes = likes;
@@ -24,13 +24,15 @@ export default class Card {
 
   createNewCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
+    if (this._ownerId===this._userId) {
+      this._element.querySelector(".photos__card-delete-button").classList.add("photos__card-delete-button_active")
+    };
     this._updateLikeIcon();
     this._cardImage = this._element.querySelector(".photos__card-image");
     this._element.querySelector(".photos__card-title").textContent = this._name;
     this._cardImage.src = this._link;
     this._cardImage.alt = "На карточке изображено: " + this._name;
-    //this._likeButton = this._element.querySelector(".photos__card-like-button");
+    this._setEventListeners();
     return this._element;
   }
 
@@ -65,7 +67,7 @@ export default class Card {
         this._handleLikeClick();
       });
 
-    this._element
+      if (this._ownerId === this._userId) this._element
       .querySelector(".photos__card-delete-button")
       .addEventListener("click", () => {
         this._handleDeleteIconClick('click', () => this._deleteCard());
