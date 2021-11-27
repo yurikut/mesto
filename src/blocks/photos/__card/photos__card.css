@@ -1,7 +1,9 @@
+/** @format */
+
 .photos__card {
-    list-style-type: none;
-    width: 282px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
-    position: relative;
+  list-style-type: none;
+  width: 282px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  position: relative;
 }
