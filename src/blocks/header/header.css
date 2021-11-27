@@ -1,21 +1,22 @@
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0 auto;
-    max-width: 882px;
-    border-bottom: 1px solid rgba(54, 54, 54, 0.7);
+/** @format */
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-width: 882px;
+  border-bottom: 1px solid rgba(54, 54, 54, 0.7);
 }
 
 @media screen and (max-width: 901px) {
-    .header {
-        width: 95%;
-    }
+  .header {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 700px) {
-    .header {
-        width: 100%;
-    }
+  .header {
+    width: 100%;
+  }
 }

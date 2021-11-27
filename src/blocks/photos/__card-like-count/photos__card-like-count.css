@@ -1,7 +1,9 @@
+/** @format */
+
 .photos__card-like-count {
-    color: black;
-    margin: 0;
-    margin-top: 3px;
-    font-size: 13px;
-    line-height: 1.21
+  color: black;
+  margin: 0;
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.21;
 }

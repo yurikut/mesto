@@ -1,13 +1,15 @@
+/** @format */
+
 .photos__card-image {
-    max-height: 282px;
-    min-height: 282px;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px 10px 0px 0px;
-    object-fit: cover;
-    object-position: top;
+  max-height: 282px;
+  min-height: 282px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0px 0px;
+  object-fit: cover;
+  object-position: top;
 }
 
 .photos__card-image:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

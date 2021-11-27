@@ -1,10 +1,12 @@
+/** @format */
+
 .content {
-    max-width: 882px;
-    margin: 0 auto;
+  max-width: 882px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 901px) {
-    .content {
-        width: 95%;
-    }
+  .content {
+    width: 95%;
+  }
 }

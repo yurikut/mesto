@@ -5,7 +5,6 @@ import {
   profileTitle,
   profileSubtitle,
   profileAvatar,
-
   editButton,
   addButton,
   editAvatarButton,
@@ -13,17 +12,13 @@ import {
   popupCardSelector,
   popupPreviewImageSelector,
   popupEditAvatarSelector,
-
   formElementProfile,
   formElementCard,
   formElementAvatar,
-
   nameInput,
   jobInput,
-
   cardContainerSelector,
   popupWithConfirmSelector,
-
   config,
   apiConfig,
 } from "../scripts/data.js";
@@ -79,7 +74,7 @@ const popupProfile = new PopupWithForm(popupEditProfileSelector, (profileData) =
     .then((resp) => {
       userData.setUserInfo({
         userName: resp.name,
-        userJob: resp.about
+        userJob: resp.about,
       });
       popupProfile.close();
     })
@@ -89,22 +84,22 @@ const popupProfile = new PopupWithForm(popupEditProfileSelector, (profileData) =
 
 const popupAvatar = new PopupWithForm(popupEditAvatarSelector, (avatarData) => {
   popupAvatar.renderButton(true);
-  api.setUserAvatar({ avatar: avatarData.avatarLink})
-  .then((resp) =>{
-    userData.setUserInfo({userAvatar: resp.avatar });
-    popupAvatar.close;
-  })
-  .catch((err) => console.log(`Ошибка: ${err}`))
-  .finally(() => {
-    popupAvatar.renderButton(false);
-    popupAvatar.close();
-  });
-})
+  api
+    .setUserAvatar({ avatar: avatarData.avatarLink })
+    .then((resp) => {
+      userData.setUserInfo({ userAvatar: resp.avatar });
+      popupAvatar.close;
+    })
+    .catch((err) => console.log(`Ошибка: ${err}`))
+    .finally(() => {
+      popupAvatar.renderButton(false);
+      popupAvatar.close();
+    });
+});
 
 const popupPreview = new PopupWithImage(popupPreviewImageSelector);
 
 const popupConfirm = new PopupWithConfirm(popupWithConfirmSelector);
-
 
 function createCard(newCard) {
   const card = new Card(
@@ -135,15 +130,18 @@ function createCard(newCard) {
       handleDeleteIconClick: () => {
         popupConfirm.open();
         popupConfirm.setConfirmAction(() => {
-          api.deleteCard(card.id())
+          api
+            .deleteCard(card.id())
             .then(() => {
               card.deleteCard();
               popupConfirm.close();
             })
-            .catch(err => console.log(`Ошибка: ${err}`));
-      });
+            .catch((err) => console.log(`Ошибка: ${err}`));
+        });
+      },
     },
-  }, "#card");
+    "#card"
+  );
   return card.createNewCard();
 }
 
@@ -152,13 +150,11 @@ const profileFormValidator = new FormValidator(config, formElementProfile);
 const cardFormValidator = new FormValidator(config, formElementCard);
 const avatarFormValidator = new FormValidator(config, formElementAvatar);
 
-
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-
-// установка слушателей 
+// установка слушателей
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();
@@ -183,7 +179,7 @@ editAvatarButton.addEventListener("click", () => {
 });
 
 // обновление данных с сервера
-Promise.all([api.getUserInfo(), api.getInitialCards()]) 
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([data, items]) => {
     userId = data._id;
     userData.setUserInfo({

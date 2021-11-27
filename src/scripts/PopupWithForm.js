@@ -1,3 +1,5 @@
+/** @format */
+
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
@@ -19,7 +21,7 @@ export default class PopupWithForm extends Popup {
   }
 
   renderButton(isBusy) {
-    this._button.textContent = isBusy ? 'Сохранение...' : this._buttonDefaultText;
+    this._button.textContent = isBusy ? "Сохранение..." : this._buttonDefaultText;
   }
 
   close() {

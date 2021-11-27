@@ -1,3 +1,5 @@
+/** @format */
+
 export default class Section {
   constructor({ renderer }, containerSelector) {
     //this._items = data;

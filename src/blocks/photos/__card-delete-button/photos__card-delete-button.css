@@ -1,19 +1,21 @@
+/** @format */
+
 .photos__card-delete-button {
-    position: absolute;
-    background-color: transparent;
-    background-image: url(../../../images/delete_button.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    outline: none;
-    top: 18px;
-    right: 15px;
-    width: 18px;
-    padding-bottom: 20px;
-    border: none;
+  position: absolute;
+  background-color: transparent;
+  background-image: url(../../../images/delete_button.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  outline: none;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  padding-bottom: 20px;
+  border: none;
 }
 
 .photos__card-delete-button:hover {
-    opacity: 0.6;
-    cursor: pointer;
-    transition: opacity .5s linear 0s;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.5s linear 0s;
 }

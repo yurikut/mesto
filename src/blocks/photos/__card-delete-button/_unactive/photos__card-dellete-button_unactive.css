@@ -1,0 +1,4 @@
+/** @format */
+.photos__card-delete-button_unactive {
+  display: none;
+}
