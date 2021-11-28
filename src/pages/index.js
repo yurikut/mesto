@@ -24,13 +24,13 @@ import {
 } from "../utils/data.js";
 
 import Card from "../components/Card.js";
-import FormValidator from "../components/FormValidator.js.js";
+import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
-import PopupWithImage from "../components/PopupWithImage.js.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import Api from "../components/Api";
-import PopupWithConfirm from "../components/PopupWithConfirm";
+import Api from "../components/Api.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 const api = new Api(apiConfig);
 
