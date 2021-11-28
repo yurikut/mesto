@@ -1,11 +1,16 @@
+/** @format */
+
 .profile__avatar {
-    border-radius: 50%;
-    width: 120px;
+  min-height: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  width: 120px;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity 0.5s linear 0s;
 }
 
-@media screen and (max-width: 700px) {
-    .profile__avatar {
-        margin: 0 auto;
-        margin-bottom: 10px;
-    }
+.profile__avatar:hover {
+  opacity: 0.2;
+  cursor: pointer;
 }

@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -6,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto Russia</title>
-   <!-- <script type="module" src="./index.js" defer></script> -->
+    <!-- <script type="module" src="./index.js" defer></script> -->
   </head>
   <body class="page">
     <header class="header">
@@ -15,11 +17,10 @@
 
     <main class="content">
       <section class="profile">
-        <img
-          class="profile__avatar"
-          src="<%=require('./images/Avatar.jpg')%>"
-          alt="Аватар профиля"
-        />
+        <div class="profile__avatar-container">
+          <img alt="Логотип профиля" class="profile__avatar" />
+          <img src="<%=require('./images/editAvatarButton.svg')%>" alt="" class="profile__edit-avatar-button" />
+        </div>
         <div class="profile__info">
           <div class="profile__name-container">
             <h1 class="profile__name"></h1>
@@ -111,8 +112,7 @@
 
     <div class="popup popup_type_confirm">
       <div class="popup__container popup__container_type_confirm">
-        <button
-          class="popup__close-button" type="button"></button>
+        <button class="popup__close-button" type="button"></button>
         <form class="form form_type_confirm" name="confirm" novalidate>
           <h2 class="form__title form__title_type_confirm">Вы уверены?</h2>
           <button type="submit" class="form__submit-button form__submit-button_type_confirm">Да</button>
@@ -126,7 +126,7 @@
         <form class="form" name="editAvatarForm" novalidate>
           <h2 class="form__title">Обновить аватар</h2>
           <input
-           type="url"
+            type="url"
             name="avatarLink"
             placeholder="Ссылка на аватар"
             class="form__input form__input_el_link-avatar"
@@ -138,10 +138,6 @@
         </form>
       </div>
     </div>
-
-  </div>
-
-  
 
     <template id="card">
       <il class="photos__card">
