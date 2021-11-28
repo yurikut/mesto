@@ -75,6 +75,7 @@ const popupProfile = new PopupWithForm(popupEditProfileSelector, (profileData) =
       userData.setUserInfo({
         userName: resp.name,
         userJob: resp.about,
+        userAvatar: resp.avatar
       });
       popupProfile.close();
     })
@@ -87,7 +88,11 @@ const popupAvatar = new PopupWithForm(popupEditAvatarSelector, (avatarData) => {
   api
     .setUserAvatar({ avatar: avatarData.avatarLink })
     .then((resp) => {
-      userData.setUserInfo({ userAvatar: resp.avatar });
+      userData.setUserInfo({
+        userName: resp.name,
+        userId: resp.about,
+        userAvatar: resp.avatar
+      });
       popupAvatar.close;
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
