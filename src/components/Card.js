@@ -13,6 +13,7 @@ export default class Card {
     this._cardId = _id;
 
     this._cardSelector = cardSelector;
+
     this._handleCardClick = handleCardClick;
     this._handleLikeClick = handleLikeClick;
     this._handleDeleteIconClick = handleDeleteIconClick;
@@ -28,8 +29,11 @@ export default class Card {
 
   createNewCard() {
     this._element = this._getTemplate();
+    this._likeIcon = this._element.querySelector(".photos__card-like-button");
+    this._deleteButton = this._element.querySelector(".photos__card-delete-button");
+
     if (!(this._ownerId === this._userId)) {
-      this._element.querySelector(".photos__card-delete-button").classList.add("photos__card-delete-button_unactive");
+      this._deleteButton.classList.add("photos__card-delete-button_unactive");
     }
     this._updateLikeIcon();
     this._cardImage = this._element.querySelector(".photos__card-image");
@@ -45,10 +49,10 @@ export default class Card {
   }
 
   _updateLikeIcon() {
-    this._element.querySelector(".photos__card-like-count").textContent = this._likes.length; // пока не реализован
+    this._element.querySelector(".photos__card-like-count").textContent = this._likes.length;
     if (this.isLiked())
-      this._element.querySelector(".photos__card-like-button").classList.add("photos__card-like-button_liked");
-    else this._element.querySelector(".photos__card-like-button").classList.remove("photos__card-like-button_liked");
+      this._likeIcon.classList.add("photos__card-like-button_liked");
+    else this._likeIcon.classList.remove("photos__card-like-button_liked");
   }
 
   setLikesInfo(data) {
@@ -62,20 +66,20 @@ export default class Card {
 
   deleteCard() {
     this._element.remove();
-    this._element.innerHTML = "";
+    this._element.innerHTML = null;
   }
 
   _setEventListeners() {
-    this._element.querySelector(".photos__card-like-button").addEventListener("click", () => {
+    this._likeIcon.addEventListener("click", () => {
       this._handleLikeClick();
     });
 
     if (this._ownerId === this._userId)
-      this._element.querySelector(".photos__card-delete-button").addEventListener("click", () => {
+      this._deleteButton.addEventListener("click", () => {
         this._handleDeleteIconClick("click", () => this._deleteCard());
       });
 
-    this._element.querySelector(".photos__card-image").addEventListener("click", () => {
+    this._cardImage.addEventListener("click", () => {
       this._handleCardClick();
     });
   }

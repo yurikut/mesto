@@ -21,16 +21,16 @@ import {
   popupWithConfirmSelector,
   config,
   apiConfig,
-} from "../scripts/data.js";
+} from "../utils/data.js";
 
-import Card from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import Section from "../scripts/Section.js";
-import UserInfo from "../scripts/UserInfo.js";
-import PopupWithImage from "../scripts/PopupWithImage.js";
-import PopupWithForm from "../scripts/PopupWithForm.js";
-import Api from "../scripts/Api";
-import PopupWithConfirm from "../scripts/PopupWithConfirm";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import Api from "../components/Api";
+import PopupWithConfirm from "../components/PopupWithConfirm";
 
 const api = new Api(apiConfig);
 
@@ -93,12 +93,11 @@ const popupAvatar = new PopupWithForm(popupEditAvatarSelector, (avatarData) => {
         userId: resp.about,
         userAvatar: resp.avatar
       });
-      popupAvatar.close;
+      popupAvatar.close();
     })
     .catch((err) => console.log(`Ошибка: ${err}`))
     .finally(() => {
       popupAvatar.renderButton(false);
-      popupAvatar.close();
     });
 });
 
@@ -168,8 +167,9 @@ popupConfirm.setEventListeners();
 
 editButton.addEventListener("click", () => {
   profileFormValidator.resetValidation();
-  nameInput.value = userData.getUserInfo().userName;
-  jobInput.value = userData.getUserInfo().userJob;
+  const {userName, userJob} = userData.getUserInfo()
+  nameInput.value = userName;
+  jobInput.value = userJob;
   popupProfile.open();
 });
 
