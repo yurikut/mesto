@@ -90,7 +90,7 @@ const popupAvatar = new PopupWithForm(popupEditAvatarSelector, (avatarData) => {
     .then((resp) => {
       userData.setUserInfo({
         userName: resp.name,
-        userId: resp.about,
+        userJob: resp.about,
         userAvatar: resp.avatar
       });
       popupAvatar.close();
